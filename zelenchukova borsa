@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class plodove {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		DecimalFormat df = new DecimalFormat("##.##");
+		double kgVegetables = scanner.nextFloat();
+		double kgFruits = scanner.nextFloat();
+		int sumOfVegetables = scanner.nextInt();
+		int sumOfFruits = scanner.nextInt();
+		double income;
+		double incomeFromVegetables;
+		double incomeFromFruits;
+		double euroCourse = 1.94;
+
+		if ((kgVegetables < 0 || kgVegetables > 1000) || (kgFruits < 0 || kgFruits > 1000)
+				|| (sumOfVegetables < 0 || sumOfVegetables > 1000) || (sumOfFruits < 0 || sumOfFruits > 1000)) {
+			System.out.println("You may have entered negative, or value above 1000");
+			scanner.close();
+			return;
+		}
+
+		incomeFromVegetables = kgVegetables * sumOfVegetables;
+		incomeFromFruits = kgFruits * sumOfFruits;
+		income = incomeFromVegetables + incomeFromFruits;
+		System.out.println("Total Income: " + df.format(income / euroCourse) + " euros");
+		scanner.close();
+
+	}
+
+}
